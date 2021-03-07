@@ -65,7 +65,7 @@ To speed up certain function calls (since otherwise memory validation has to occ
 - `void WriteDir(float[3])` -> `void WriteDir(float, float, float)`
 - `void WritePosition(float[3])` -> `void WritePosition(float, float, float)`
 - `void multicast(float[3], qboolean)` -> `void multicast(float, float, float, qboolean)`
-- `int32_t BoxEdicts(float[3], float[3], edict_t *, int32_t, int32_t)` -> `int32_t BoxEdicts(float, float, float, float, float, float, edict_t *, int32_t, int32_t)`
+- `int32_t BoxEdicts(float[3], float[3], edict_t **, int32_t, int32_t)` -> `int32_t BoxEdicts(float, float, float, float, float, float, edict_t **, int32_t, int32_t)`
 - `qboolean inPHS(float[3], float[3])` -> `qboolean inPHS(float, float, float, float, float, float)`
 - `qboolean inPVS(float[3], float[3])` -> `qboolean inPVS(float, float, float, float, float, float)`
 
