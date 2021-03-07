@@ -86,7 +86,7 @@ For PmoveTrace and PmovePointContents, the pointers will be guaranteed on the en
 
 For `TagMalloc`, `TagFree` and `FreeTags`: since WASM cannot interact with memory outside of its sandbox, you should instead call the malloc & free functions of your WASM runtime to return and handle memory addresses from the former two functions. Tagging should still occur as necessary.
 
-For functions dealing with `cvar_t`: while you will get a pointer back, this pointer is owned by the native environment and should be synced with your cvar subsystem.
+For functions dealing with `cvar_t`: while WASM will receive a pointer, this pointer is allocated from the WASM runtime and should be synced with your cvar subsystem.
 
 For `trace_t` and the `csurface_t` pointer returned by it: to be compatible with native systems, you should allocate a copy of the valid `csurface_t` elements to be passed over to the WASM runtime. Keep in mind, too, that you will need some way to convert between the native and WASM pointers, since `gi.Pmove` transfers a `trace_t` structure between native and WASM!
 
