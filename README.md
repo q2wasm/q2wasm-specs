@@ -69,7 +69,7 @@ To speed up certain function calls (since otherwise memory validation has to occ
 - `qboolean inPHS(float[3], float[3])` -> `qboolean inPHS(float, float, float, float, float, float)`
 - `qboolean inPVS(float[3], float[3])` -> `qboolean inPVS(float, float, float, float, float, float)`
 
-In addition, six new functions are exported by the game module.
+In addition, seven new functions are exported by the game module.
 - These functions replace the functionality of the returned `game_export_t` pointer, and are required in order to curb around compiler optimizations + to signify this data back to the engine.
   - `edict_t *GetEdicts(void)` -> returns the current location, in the WASM heap, of the entity table
   - `int32_t *GetNumEdicts(void)` -> returns the current location, in the WASM heap, of the integer holding the number of entities
@@ -78,6 +78,8 @@ In addition, six new functions are exported by the game module.
 - These functions are required to support PMove. PMove communicated function pointers between the engine and the module, which is not legal in WASM, so instead these exports are given a call.
   - `void PmoveTrace(pmove_t *pm, float start_x, float start_y, float start_z, float mins_x, float mins_y, float mins_z, float maxs_x, float maxs_y, float maxs_z, float end_x, float end_y, float end_z, trace_t *out)`
   - `int32_t PmovePointContents(pmove_t *pm, float p_x, float p_y, float p_z)`
+- The new capability one:
+  - `game_capability_t QueryGameCapability(const char *)`
 
 GetEdicts() must always point to a pointer that contains at least `GetMaxEdicts() * GetEdictSize()` in size.
 GetNumEdicts() must always point to a pointer that contains an int32.
