@@ -75,7 +75,7 @@ In addition, six new functions are exported by the game module.
   - `int32_t *GetNumEdicts(void)` -> returns the current location, in the WASM heap, of the integer holding the number of entities
   - `int32_t GetMaxEdicts(void)` -> returns the maximum number of entities that the game library supports
   - `int32_t GetEdictSize(void)` -> returns the size of the entity structure that is pointed to by GetEdicts
-- These functions are required to support PMove. PMove communicated function pointers between the engine and the module, which is not legal in WASM, so instead these exports called in the stead of those function pointers.
+- These functions are required to support PMove. PMove communicated function pointers between the engine and the module, which is not legal in WASM, so instead these exports are given a call.
   - `void PmoveTrace(pmove_t *pm, float start_x, float start_y, float start_z, float mins_x, float mins_y, float mins_z, float maxs_x, float maxs_y, float maxs_z, float end_x, float end_y, float end_z, trace_t *out)`
   - `int32_t PmovePointContents(pmove_t *pm, float p_x, float p_y, float p_z)`
 
